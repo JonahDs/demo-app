@@ -9,18 +9,23 @@ export enum buttonColors {
 
 const StyledButton = styled.button<{ $type: buttonColors }>`
   background-color: ${({ $type }) => $type};
+
+  &:hover {
+    background-color: brown;
+  }
 `;
 
+
 type ButtonProps = {
-  value: string;
   type: buttonColors;
-  onClick: () => void;
+  onClick?: () => void;
+  children?: React.ReactNode;
 };
 
-const Button = ({ type, value, onClick }: ButtonProps) => {
+const Button = ({ type, children, onClick }: ButtonProps) => {
   return (
     <StyledButton $type={type} onClick={onClick}>
-      {value}
+      {children}
     </StyledButton>
   );
 };
